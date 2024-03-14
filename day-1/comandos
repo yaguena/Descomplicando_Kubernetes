@@ -1,0 +1,12 @@
+kubectl run meu-nginx --image nginx --dry-run=client -o yaml
+
+kubectl apply -f deployment.yaml
+
+kubectl get deployments -l app=nginx-deployment
+
+
+kubectl describe deployment nginx-deployment
+
+
+#log do pod
+kubectl get pods nginx-deployment-d466c947-7jkjf -o yaml
