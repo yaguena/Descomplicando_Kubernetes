@@ -10,3 +10,9 @@ kubectl describe deployment nginx-deployment
 
 #log do pod
 kubectl get pods nginx-deployment-d466c947-7jkjf -o yaml
+
+kubectl get replicasets -l app=nginx
+
+kubectl create deployment --image nginx --replicas 2 nginx-deployment --dry-run=client
+
+kubectl create deployment --image nginx --replicas 2 nginx-deployment --dry-run=client -o yaml > novo-deployment.yaml
