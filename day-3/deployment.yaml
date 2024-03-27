@@ -5,23 +5,27 @@ metadata:
     app: nginx-deployment
   name: nginx-deployment
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: nginx-deployment
-  strategy: {}
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:
         app: nginx-deployment
     spec:
       containers:
-      - image: nginx
+      - image: nginx:1.16.0
         name: nginx
         resources:
           limits:
             cpu: "0.5"
             memory: 256Mi
           requests:
-            cpu: "0.25"
+            cpu: 0.25
             memory: 128Mi
